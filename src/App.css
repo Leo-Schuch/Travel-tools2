@@ -34,7 +34,7 @@ body {
 form.flex-container {
   text-align: center;
 
-  size-adjust: 50%;
+  size-adjust: 100%;
 
   padding: 20px;
 
@@ -52,6 +52,7 @@ form.flex-container {
   text-align: center;
   justify-content: space-around;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  justify-content: space-around; 
 }
 
 .div {
@@ -78,6 +79,7 @@ div#root {
 
   object-position: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100vh;
 }
 
 .result-button {
