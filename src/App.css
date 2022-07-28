@@ -5,7 +5,7 @@
 
 h1 {
   background-color: #0f5387;
-  height: 20vh;
+  height: 10vh;
   text-align: center;
   font-family: 'Fira Sans', sans-serif;
   color: white;
@@ -25,7 +25,7 @@ body {
   min-width: 450px;
   size-adjust: 450px;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 
 }
 
@@ -35,8 +35,10 @@ form.flex-container {
   text-align: center;
 
   size-adjust: 100%;
-
-  padding: 20px;
+  flex-wrap: inherit;
+  padding: 10px;
+  height: auto;
+  box-sizing: border-box;
 
 
 }
@@ -45,14 +47,16 @@ form.flex-container {
 
 .flex-container>div {
   background: #f1f1f1;
-
+  size-adjust: 100%;
   border-radius: 5px;
-  padding: 20px;
+  padding: 15px;
   font-family: 'Fira Sans', sans-serif;
   text-align: center;
   justify-content: space-around;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  justify-content: space-around;
+  width: auto;
+  box-sizing: border-box;
+
 }
 
 .div {
@@ -70,6 +74,11 @@ form.flex-container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 5px;
   color: rgb(86, 143, 143);
+  text-align: center;
+  width: auto;
+
+
+  padding: 20px;
 
 }
 
@@ -80,24 +89,14 @@ div#root {
   object-position: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 100vh;
-}
-
-.result-button {
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  height: 30%;
-  justify-content: right;
-  color: white;
-  margin: 20px;
-  font-size: 20px;
-
+  padding: 5px;
 }
 
 
 .flex-container>div {
   background-color: #0f5387;
   color: white;
+  padding: 20px;
 
 }
 
@@ -105,6 +104,7 @@ input.input {
   background-color: #0f5387;
   color: rgb(86, 143, 143);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 5px;
 }
 
 select {
@@ -112,4 +112,13 @@ select {
   color: rgb(86, 143, 143);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+}
+
+.root,
+h1 {
+  padding-top: 100px;
+}
+
+button.botao {
+  width: 30%;
 }
