@@ -1,81 +1,90 @@
-*div{
+*div {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
 }
+
 h1 {
-  background-image: linear-gradient(#15576eef, #0f5387);
+  background-color: #0f5387;
   height: 20vh;
   text-align: center;
   font-family: 'Fira Sans', sans-serif;
   color: white;
 
 }
-.root{
+
+.root {
 
   text-align: center;
   object-position: center;
 }
+
 body {
   width: auto;
   display: flex;
-  background-image: linear-gradient(#15576eef, #0f5387dc);
+  background-color: #0962a7;
   min-width: 450px;
   size-adjust: 450px;
   justify-content: center;
   height: 100vh;
-  
+
 }
 
 
 
-form.flex-container{
+form.flex-container {
   text-align: center;
- 
+
   size-adjust: 50%;
-  
-  
+
+  padding: 20px;
+
+
 }
 
 
 
 .flex-container>div {
   background: #f1f1f1;
- 
+
   border-radius: 5px;
-  padding: 8px;
+  padding: 13px;
   font-family: 'Fira Sans', sans-serif;
   text-align: center;
-  justify-content: space-around;  
+  justify-content: space-around;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.div{
+
+.div {
   text-align: center;
   background-color: #15576eef;
-  
+
 
 }
-.botao{
+
+.botao {
   padding: 10px;
   cursor: pointer;
   background-image: linear-gradient(#15576eef, #0f5387);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border: 5px ;
-  color:rgb(86, 143, 143);
+  border: 5px;
+  color: rgb(86, 143, 143);
 
 }
-div#root{
+
+div#root {
   size: 450px;
   text-align: center;
- 
+
   object-position: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.result-button{
+.result-button {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height:30%;
+  height: 30%;
   justify-content: right;
   color: white;
   margin: 20px;
@@ -84,26 +93,21 @@ div#root{
 }
 
 
-.flex-container>div
-{
-  background-image: linear-gradient(#15576eef, #0f5387);
+.flex-container>div {
+  background-color: #0f5387;
   color: white;
+
 }
 
-input.input{
-  background-image: linear-gradient(#15576eef, #0f5387);
-  color:rgb(86, 143, 143);
+input.input {
+  background-color: #0f5387;
+  color: rgb(86, 143, 143);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-select{
+select {
   background-image: linear-gradient(#15576eef, #0f5387);
   color: rgb(86, 143, 143);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
+
 }
-
-
-
-
-
