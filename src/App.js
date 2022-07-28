@@ -10,7 +10,7 @@ const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=0SIBO
 
 function App() {
 
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState('null')
   const [paymentType, setPaymentType] = useState('')
   const [taxType, setTaxType] = useState('')
   const [currentQuote, setCurrentQuote] = useState('')
@@ -79,7 +79,7 @@ function App() {
       <form onSubmit={handleSubmit} className='flex-container'>
         <h1>Travel Tools</h1>
         <div>
-          <label>Valor gasto em dolar<input type='number' className='input' value={amount} onChange={(event) => setAmount(Number(event.target.value))} /> </label>
+          <label>Valor gasto em dolar:<input type='number' className='input' value={amount}  onChange={(event) => setAmount(Number(event.target.value))} /> </label>
         </div>
         <div>
           <label> Forma de pagamento
