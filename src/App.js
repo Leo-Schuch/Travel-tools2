@@ -10,7 +10,7 @@ const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=0SIBO
 
 function App() {
 
-  const [amount, setAmount] = useState('null')
+  const [amount, setAmount] = useState('0')
   const [paymentType, setPaymentType] = useState('')
   const [taxType, setTaxType] = useState('')
   const [currentQuote, setCurrentQuote] = useState('')
