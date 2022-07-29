@@ -10,12 +10,13 @@ const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=0SIBO
 
 function App() {
 
-  const [amount, setAmount] = useState('0')
+  const [amount, setAmount] = useState('')
   const [paymentType, setPaymentType] = useState('')
   const [taxType, setTaxType] = useState('')
   const [currentQuote, setCurrentQuote] = useState('')
   const [resultIof, setResultIof] = useState(0)
   const [resultTax, setResultTax] = useState(0)
+  const [canShowResult, setCanShowResult] = useState(false)
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -27,9 +28,9 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault()
 
-
+    setCanShowResult(true)
     if (amount <= 500) {
-
+      alert('Valor abaixo de 500USD não é tributado')
       return
 
     }
@@ -70,16 +71,18 @@ function App() {
     return (resultTax) + (resultIof) + (amount)
   }, [resultTax, resultIof, amount]
   )
+  
 
 
 
 
   return (
-    <>
+    <div  className='container'>
+      
       <form onSubmit={handleSubmit} className='flex-container'>
         <h1>Travel Tools</h1>
         <div>
-          <label>Valor gasto em dolar:<input type='number' className='input' value={amount}  onChange={(event) => setAmount(Number(event.target.value))} /> </label>
+          <label>Valor gasto em dolar:<input inputMode='numeric' className='input' value={amount}  onChange={(event) => setAmount(Number(event.target.value))} /> </label>
         </div>
         <div>
           <label> Forma de pagamento
@@ -111,29 +114,31 @@ function App() {
             </select>
           </label>
         </div>
-        <button type='submit' className='botao'>
-          Calcular
-        </button>
+        <div >
+          <button type='submit'>
+            Calcular
+          </button>
+        </div>
 
 
 
 
 
 
-        <div className='resultIof'><label >Resultado IOF: {formatToUsCurrency(resultIof)} </label></div>
-
-        <div className='resultTax'><label>Resultado da taxa: {formatToUsCurrency(resultTax)} </label></div>
-
-        <div className='resultIofBrl'><label>Valor total IOF em reais: {formatToBRCurrency(currentQuote * resultIof)}</label></div>
-
-        <div className='resultIofUsd'><label>Valor total Taxa em reais: {formatToBRCurrency(currentQuote * resultTax)}</label></div>
-
-        <div className='total'><label>valor total: {formatToUsCurrency(total)}</label></div>
-
-        <div className='totalRs'><label>valor total em reais: {formatToBRCurrency(total * currentQuote)}</label></div>
+        
       </form>
-    </>
-
+      {canShowResult && (
+        <div className='container-result'>
+        <div className='resultIof'><label >Resultado IOF: {formatToUsCurrency(resultIof)} </label></div>
+          <div className='resultTax'><label>Resultado da taxa: {formatToUsCurrency(resultTax)} </label></div>
+          <div className='resultIofBrl'><label>Valor total IOF em reais: {formatToBRCurrency(currentQuote * resultIof)}</label></div>
+          <div className='resultIofUsd'><label>Valor total Taxa em reais: {formatToBRCurrency(currentQuote * resultTax)}</label></div>
+          <div className='total'><label>valor total: {formatToUsCurrency(total)}</label></div>
+          <div className='totalRs'><label>valor total em reais: {formatToBRCurrency(total * currentQuote)}</label></div>
+      </div>
+      )}
+    </div>
+  
   );
 
 }
