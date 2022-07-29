@@ -1,124 +1,88 @@
-*div {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-h1 {
-  background-color: #0f5387;
-  height: 10vh;
-  text-align: center;
+* {
   font-family: 'Fira Sans', sans-serif;
-  color: white;
-
+  margin: 0;
+  padding: 0;
 }
 
-.root {
-
-  text-align: center;
-  object-position: center;
+div.container {
+  background-color: #f1f1f1;
 }
 
-body {
-  width: auto;
+.container {
+  min-height: 100vh;
   display: flex;
-  background-color: #0962a7;
-  min-width: 450px;
-  size-adjust: 450px;
+  align-items: center;
   justify-content: center;
   height: 100%;
+  flex-direction: column;
 
 }
 
-
-
-form.flex-container {
-  text-align: center;
-
-  size-adjust: 100%;
-  flex-wrap: inherit;
-  padding: 10px;
-  height: auto;
-  box-sizing: border-box;
-
-
-}
-
-
-
-
-.flex-container>div {
-  background: #f1f1f1;
-  size-adjust: 100%;
-  border-radius: 5px;
-  padding: 15px;
-  font-family: 'Fira Sans', sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: auto;
-  margin: 20px;
-
-
-
-}
-
-
-.botao {
-  padding: 10px;
-  background-image: linear-gradient(#15576eef, #0f5387);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border: 5px;
-  color: rgb(86, 143, 143);
-  text-align: center;
-  width: auto;
-  padding: 20px;
-
-}
-
-div#root {
-  size: 450px;
-  text-align: center;
-  object-position: center;
-  width: 100vh;
-  padding: 5px;
-}
-
-
-.flex-container>div {
-  background-color: #0f5387;
-  color: white;
-  padding: 10px;
-
-}
-
-input.input {
-  background-color: #0f5387;
-  color: rgb(86, 143, 143);
-  padding: 5px;
-  width: 50px;
-}
-
-select {
-  background-image: linear-gradient(#15576eef, #0f5387);
-  color: rgb(86, 143, 143);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.root,
 h1 {
-  padding-top: 50px;
+  background-color: #0f5387;
+  margin-bottom: 40px;
+  text-align: center;
+  color: white;
+
 }
 
-button.botao {
-  width: 30%;
-  cursor: pointer;
+form {
+  background-color: #0f5387;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 20px;
+  max-width: 400px;
+  width: 100%;
+
 }
 
-div.botao {
 
-  background-color: #0962a7;
-  box-shadow: none;
-  margin: 30px;
+form div label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: #fff;
+}
+form div select,
 
 
+form div input {
+  padding: 10px;
+  border: 1px solid #147bc9;
+  background: transparent;
+  border-radius: 4px;
+  color: #fff;
+  margin-top: 4px;
+}
+form div select{
+  background-color: #0f5387;
+}
+
+form div button {
+  padding: 10px;
+  border: 1px solid #147bc9;
+  background: #147bc9;
+  border-radius: 4px;
+  color: #fff;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.container-result {
+  margin-top: 20px;
+  background-color: #0f5387;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 20px;
+  max-width: 400px;
+  width: 100%;
+  color: white;
 }
