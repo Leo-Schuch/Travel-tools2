@@ -9,7 +9,7 @@ const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=0SIBO
 
 
 function App() {
-
+  //O useState nos permite criar estados em um componente criado a partir de uma função, assim como o state presente em componentes criados a partir de classes
   const [amount, setAmount] = useState('')
   const [paymentType, setPaymentType] = useState('')
   const [taxType, setTaxType] = useState('')
@@ -22,13 +22,13 @@ function App() {
     fetch(BASE_URL)
       .then(res => res.json())
       .then(data => setCurrentQuote(data.quote))
-  }, [])
+  }, []) //useEffect para importar os valores da api
 
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault() //Registra o valor atual do elemento de entrada(input) sempre que o formulário for enviado; Impede o comportamento padrão do formulário HTML de navegar para uma nova página
 
-    setCanShowResult(true)
+    setCanShowResult(true) // if utilizado para prosseguir com os calculos se o valor for acima de 500 usd
     if (amount <= 500) {
       alert('Valor abaixo de 500USD não é tributado')
       return
@@ -44,7 +44,7 @@ function App() {
       setResultTax((updatedValue * (50 / 100)))
     }
     if (taxType === 'tax-without-declare') {
-      setResultTax(amount)
+      setResultTax(updatedValue)
     }
     if (taxType === 'no-tax-without-declare') {
       setResultTax(0)
@@ -58,7 +58,7 @@ function App() {
     }
 
     if (taxType === 'tax-without-declare') {
-      setResultTax(amount)
+      setResultTax(updatedValue)
     }
 
 
@@ -67,22 +67,22 @@ function App() {
     }
 
   }
-  const total = useMemo(() => {
+  const total = useMemo(() => { //useMemo executa a função inicialmente e somente executa novamente caso as dependências informadas sejam alteradas
     return (resultTax) + (resultIof) + (amount)
-  }, [resultTax, resultIof, amount]
+  }, [resultTax, resultIof, amount] // <array de dependência
   )
-  
+
 
 
 
 
   return (
-    <div  className='container'>
-      
+    <div className='container'>
+
       <form onSubmit={handleSubmit} className='flex-container'>
         <h1>Travel Tools</h1>
         <div>
-          <label>Valor gasto em dolar:<input inputMode='numeric' className='input' value={amount}  onChange={(event) => setAmount(Number(event.target.value))} /> </label>
+          <label>Valor gasto em dolar:<input inputMode='numeric' className='input' value={amount} onChange={(event) => setAmount(Number(event.target.value))} /> </label>
         </div>
         <div>
           <label> Forma de pagamento
@@ -93,8 +93,6 @@ function App() {
               <option value='credit-card'>
                 Cartão de crédito
               </option>
-
-
             </select>
           </label>
         </div>
@@ -120,25 +118,19 @@ function App() {
           </button>
         </div>
 
-
-
-
-
-
-        
       </form>
       {canShowResult && (
         <div className='container-result'>
-        <div className='resultIof'><label >Resultado IOF: {formatToUsCurrency(resultIof)} </label></div>
+          <div className='resultIof'><label >Resultado IOF: {formatToUsCurrency(resultIof)} </label></div>
           <div className='resultTax'><label>Resultado da taxa: {formatToUsCurrency(resultTax)} </label></div>
           <div className='resultIofBrl'><label>Valor total IOF em reais: {formatToBRCurrency(currentQuote * resultIof)}</label></div>
           <div className='resultIofUsd'><label>Valor total Taxa em reais: {formatToBRCurrency(currentQuote * resultTax)}</label></div>
           <div className='total'><label>valor total: {formatToUsCurrency(total)}</label></div>
           <div className='totalRs'><label>valor total em reais: {formatToBRCurrency(total * currentQuote)}</label></div>
-      </div>
+        </div>
       )}
     </div>
-  
+
   );
 
 }
