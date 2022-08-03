@@ -40,41 +40,27 @@ function App() {
     if (paymentType === 'cash') {
       setResultIof(amount * (1.1 / 100))
     }
-    if (taxType === 'declare') {
-      setResultTax((updatedValue * (50 / 100)))
-    }
-    if (taxType === 'tax-without-declare') {
-      setResultTax(updatedValue)
-    }
-    if (taxType === 'no-tax-without-declare') {
-      setResultTax(0)
-    }
 
     if (paymentType === 'credit-card') {
       setResultIof(amount * (6.38 / 100))
     }
+
     if (taxType === 'declare') {
       setResultTax((updatedValue * (50 / 100)))
     }
-
     if (taxType === 'tax-without-declare') {
       setResultTax(updatedValue)
     }
-
-
     if (taxType === 'no-tax-without-declare') {
       setResultTax(0)
     }
+
 
   }
   const total = useMemo(() => { //useMemo executa a função inicialmente e somente executa novamente caso as dependências informadas sejam alteradas
     return (resultTax) + (resultIof) + (amount)
   }, [resultTax, resultIof, amount] // <array de dependência
   )
-
-
-
-
 
   return (
     <div className='container'>
