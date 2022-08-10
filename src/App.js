@@ -1,27 +1,32 @@
 import './App.css';
 import React, { useEffect, useMemo, useState } from 'react';
-
+import ProductManager from './components/ProductManeger';
 import { formatToBRCurrency, formatToUsCurrency } from './utils/currency';
 
 
-const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=0SIBO8_fjWJkSyJ0Z_6E&from=USD&to=BRL&amount=1'
+
+const BASE_URL = 'https://marketdata.tradermade.com/api/v1/convert?api_key=cw1bjUaX7yekv4yIvmat&from=USD&to=BRL&amount=1'
 
 
 
 function App() {
   //O useState nos permite criar estados em um componente criado a partir de uma função, assim como o state presente em componentes criados a partir de classes
   const [amount, setAmount] = useState('')
-  const [paymentType, setPaymentType] = useState('')
-  const [taxType, setTaxType] = useState('')
+  const [paymentType, setPaymentType] = useState('cash')
+  const [taxType, setTaxType] = useState('declare')
   const [currentQuote, setCurrentQuote] = useState('')
   const [resultIof, setResultIof] = useState(0)
   const [resultTax, setResultTax] = useState(0)
   const [canShowResult, setCanShowResult] = useState(false)
+  
 
+  
+  
   useEffect(() => {
     fetch(BASE_URL)
-      .then(res => res.json())
-      .then(data => setCurrentQuote(data.quote))
+    .then(res => res.json())
+    .then(data => setCurrentQuote(data.quote))
+    
   }, []) //useEffect para importar os valores da api
 
 
@@ -29,6 +34,7 @@ function App() {
     event.preventDefault() //Registra o valor atual do elemento de entrada(input) sempre que o formulário for enviado; Impede o comportamento padrão do formulário HTML de navegar para uma nova página
 
     setCanShowResult(true) // if utilizado para prosseguir com os calculos se o valor for acima de 500 usd
+
     if (amount <= 500) {
       alert('Valor abaixo de 500USD não é tributado')
       return
@@ -40,11 +46,6 @@ function App() {
     if (paymentType === 'cash') {
       setResultIof(amount * (1.1 / 100))
     }
-
-    if (paymentType === 'credit-card') {
-      setResultIof(amount * (6.38 / 100))
-    }
-
     if (taxType === 'declare') {
       setResultTax((updatedValue * (50 / 100)))
     }
@@ -54,17 +55,22 @@ function App() {
     if (taxType === 'no-tax-without-declare') {
       setResultTax(0)
     }
+    if (paymentType === 'credit-card') {
+      setResultIof(amount * (6.38 / 100))
 
-
+    }
+    
   }
-  const total = useMemo(() => { //useMemo executa a função inicialmente e somente executa novamente caso as dependências informadas sejam alteradas
+ const total = useMemo(() => { //useMemo executa a função inicialmente e somente executa novamente caso as dependências informadas sejam alteradas
     return (resultTax) + (resultIof) + (amount)
   }, [resultTax, resultIof, amount] // <array de dependência
   )
 
   return (
+    
+    
     <div className='container'>
-
+      
       <form onSubmit={handleSubmit} className='flex-container'>
         <h1>Travel Tools</h1>
         <div>
@@ -83,6 +89,7 @@ function App() {
           </label>
         </div>
         <div>
+          
           <label> Impostos
             <select value={taxType} onChange={(event) => setTaxType(event.target.value)}>
               <option value='declare'>
@@ -98,6 +105,7 @@ function App() {
             </select>
           </label>
         </div>
+
         <div >
           <button type='submit'>
             Calcular
@@ -107,16 +115,30 @@ function App() {
       </form>
       {canShowResult && (
         <div className='container-result'>
-          <div className='resultIof'><label >Resultado IOF: {formatToUsCurrency(resultIof)} </label></div>
-          <div className='resultTax'><label>Resultado da taxa: {formatToUsCurrency(resultTax)} </label></div>
-          <div className='resultIofBrl'><label>Valor total IOF em reais: {formatToBRCurrency(currentQuote * resultIof)}</label></div>
-          <div className='resultIofUsd'><label>Valor total Taxa em reais: {formatToBRCurrency(currentQuote * resultTax)}</label></div>
-          <div className='total'><label>valor total: {formatToUsCurrency(total)}</label></div>
-          <div className='totalRs'><label>valor total em reais: {formatToBRCurrency(total * currentQuote)}</label></div>
+          <div className='resultIof'>
+            <label>Resultado IOF: {formatToUsCurrency(resultIof)} </label>
+          </div>
+          <div className='resultTax'>
+            <label>Resultado da taxa: {formatToUsCurrency(resultTax)} </label>
+          </div>
+          <div className='resultIofBrl'>
+            <label>Valor total IOF em reais: {formatToBRCurrency(currentQuote * resultIof)}</label>
+          </div>
+          <div className='resultIofUsd'>
+            <label>Valor total Taxa em reais: {formatToBRCurrency(currentQuote * resultTax)}</label>
+          </div>
+          <div className='total'>
+            <label>valor total: {formatToUsCurrency(total)}</label>
+          </div>
+          <div className='totalRs'>
+            <label>valor total em reais: {formatToBRCurrency(total * currentQuote)}</label>
+          </div>
         </div>
       )}
+      <div> <ProductManager/></div>
     </div>
-
+    
+    
   );
 
 }
