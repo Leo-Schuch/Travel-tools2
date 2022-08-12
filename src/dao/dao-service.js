@@ -1,13 +1,20 @@
-import { doc, updateDoc, collection, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase-config';
 
-const insert = async (data) => {
-  const id = new Date().getTime();
-  const docRef = doc(db, 'calculos', id);
+const getAllDocumentsAt = async (collectionName) => {
+  const results = [];
+  const querySnapshot = await getDocs(collection(db, collectionName));
 
-  await updateDoc(docRef, data);
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    results.push({
+      id: doc.id,
+      name: data?.name,
+      value: data?.value
+    });
+  });
+
+  return results;
 };
 
-const getQuery = async (collectionName) => query(collection(db, collectionName), orderBy('created', 'desc'));
-
-export { insert, getQuery };
+export { getAllDocumentsAt };

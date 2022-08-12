@@ -1,15 +1,33 @@
+import { useEffect, useState } from "react";
+import { getAllDocumentsAt } from "../dao/dao-service";
 
-function Product({ id, name, value }) {
-console.log('name', 'id', 'value')
-return (
+const Product = ({ handleSelectChange }) => {
+    const [products, setProducts] = useState([0]);
+    console.log(products)
+    const getProducts = async () => {
+        const products = await getAllDocumentsAt('produtos');
+        setProducts(products);
+    };
 
-        <div className='task__body'>
-            <h2>{name}</h2>
-            <p>{value}</p>
+    const onSelectChange = (event) => handleSelectChange(Number(event.target.value));
+
+    useEffect(() => {
+        getProducts();
+    }, []);
+
+    return (
+        <div>
+            <h1>Products</h1>
+            <select id="products" onChange={onSelectChange} >
+                {products.map((product) => {
+                    return (
+                        <option id={product.id} value={product.value}>{product.name}</option>
+                    )
+                })}
+            </select>
         </div>
 
-    )
-  
-}
+    );
+};
 
-export default Product
+export { Product };
