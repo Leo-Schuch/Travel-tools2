@@ -1,5 +1,6 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import { db } from './firebase-config';
+import { v4 as uuid } from 'uuid';
 
 const getAllDocumentsAt = async (collectionName) => {
   const results = [];
@@ -14,7 +15,21 @@ const getAllDocumentsAt = async (collectionName) => {
     });
   });
 
+
   return results;
 };
 
-export { getAllDocumentsAt };
+const setData = async (collectionName, item) => {
+  try {
+    console.log(item)
+    const document = doc(db, collectionName, uuid());
+    
+    await setDoc(document, item);
+  } catch (error) {
+    console.log(error)
+  }
+
+};
+
+
+export { getAllDocumentsAt, setData };

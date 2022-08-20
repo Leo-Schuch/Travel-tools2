@@ -86,3 +86,15 @@ form div button {
   width: 100%;
   color: white;
 }
+
+.newProduct {
+  width: 30%;
+  text-align: center;
+  margin-block: 20px;
+  border-radius: 5px;
+
+}
+
+.divNewProject{
+  text-align: center;
+}
