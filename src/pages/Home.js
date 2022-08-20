@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../components/Product';
 import { formatToBRCurrency, formatToUsCurrency } from '../utils/currency';
 import './Users'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -25,7 +26,13 @@ function Home() {
   const [resultStateTax, setResultStateTax] = useState(0)
 
 
-
+  
+    const navigate = useNavigate();
+  
+    const navigateToUsers = () => {
+      // 👇️ navigate to /contacts
+      navigate('/users');
+    };
 
 
   useEffect(() => {
@@ -35,9 +42,10 @@ function Home() {
 
   }, []) //useEffect para importar os valores da api
 
-
+ 
   function handleSubmit(event) {
     event.preventDefault() //Registra o valor atual do elemento de entrada(input) sempre que o formulário for enviado; Impede o comportamento padrão do formulário HTML de navegar para uma nova página
+    
 
     if (amount <= 500) {
       setCanShowResult(false)
@@ -161,7 +169,7 @@ function Home() {
           </button>
         </div>
         <div className='divNewProject'>
-          <button type='submit' className='newProduct' onClick>
+          <button type='submit' className='newProduct' onClick={navigateToUsers}>
             Novo produto
           </button>
         </div>

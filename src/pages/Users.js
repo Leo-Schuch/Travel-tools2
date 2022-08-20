@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import './Users.css'
 import {setData} from '../dao/dao-service'
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 function Users() {
     const [value, setValue] = useState();
     const [name, setName] = useState();
@@ -17,6 +22,13 @@ function Users() {
       })
       alert("Item cadastrado com sucesso")
     }
+
+    const navigate = useNavigate();
+  
+const navigateToHome = () => {
+  // 👇️ navigate to /contacts
+  navigate('/');
+};
     
 
   return (
@@ -55,6 +67,9 @@ function Users() {
         </div>
         <div>
         <button onClick={buttonClickHandler}>Cadastrar</button>
+        </div>
+        <div>
+          <button className='newProduct' onClick={navigateToHome}>Voltar</button>
         </div>
       </form>
     </div>
