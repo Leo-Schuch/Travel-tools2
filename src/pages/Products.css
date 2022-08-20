@@ -49,4 +49,15 @@ div button {
     flex-direction: column;
   
   }
+
+.products {
+    padding-bottom: 10px;
+  }
+
+  select#products{
+    
+   margin-right: 20px;
+
+  }
+
  

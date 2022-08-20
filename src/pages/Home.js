@@ -2,8 +2,8 @@ import '../../src/App.css';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../components/Product';
 import { formatToBRCurrency, formatToUsCurrency } from '../utils/currency';
-import './Users'
-import { Navigate, useNavigate } from 'react-router-dom';
+import './Products'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -29,9 +29,9 @@ function Home() {
   
     const navigate = useNavigate();
   
-    const navigateToUsers = () => {
-      // 👇️ navigate to /contacts
-      navigate('/users');
+    const navigateToProducts = () => {
+      
+      navigate('/products');
     };
 
 
@@ -104,12 +104,20 @@ function Home() {
       <form onSubmit={handleSubmit} className='flex-container'>
         <h1>Travel Tools</h1>
         <div>
-          <Product  handleSelectChange={setAmount} />
+          <Product  handleSelectChange={setAmount}/>
+          <button type='submit' className='newProduct' onClick={navigateToProducts}>
+            Criar
+          </button>
+          
+        
+          
+          
           <label>Valor gasto em dolar:<input inputMode='numeric' className='input' value={amount} onChange={(event) => {
 
             setAmount(Number(event.target.value))
           }}
           /> </label>
+          
         </div>
         <div>
           <label> Estado da compra
@@ -168,11 +176,7 @@ function Home() {
             Calcular
           </button>
         </div>
-        <div className='divNewProject'>
-          <button type='submit' className='newProduct' onClick={navigateToUsers}>
-            Novo produto
-          </button>
-        </div>
+        
 
       </form>
       {!canShowResult && (<p>{errorMessage}</p>)}

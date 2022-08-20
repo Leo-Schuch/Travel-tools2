@@ -16,8 +16,9 @@ const Product = ({ handleSelectChange }) => {
     }, []);
 
     return (
-        <div>
-            <h1>Products</h1>
+        <>
+            <label className="products">Produtos</label>
+            
             <select id="products" onChange={onSelectChange} >
                 {products.map((product) => {
                     return (
@@ -25,7 +26,7 @@ const Product = ({ handleSelectChange }) => {
                     )
                 })}
             </select>
-        </div>
+        </>
 
     );
 };

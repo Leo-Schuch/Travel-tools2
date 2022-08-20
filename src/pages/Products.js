@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
-import './Users.css'
+import './Products.css'
 import {setData} from '../dao/dao-service'
 import { useNavigate } from 'react-router-dom';
 
 
 
 
-function Users() {
+function Products() {
     const [value, setValue] = useState();
     const [name, setName] = useState();
     const [type, setType] = useState();
-    const handleChangeValues = (values) => {
-    }
+    
     const buttonClickHandler = async(event)=>{
       event.preventDefault()
       await setData("produtos", {
@@ -26,7 +25,7 @@ function Users() {
     const navigate = useNavigate();
   
 const navigateToHome = () => {
-  // 👇️ navigate to /contacts
+  
   navigate('/');
 };
     
@@ -76,4 +75,4 @@ const navigateToHome = () => {
   )
 }
 
-export default Users
+export default Products
